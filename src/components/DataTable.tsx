@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import Button from "./Button";
 import Modal from "./Modal";
+import { options } from '../api/server';
 import { DataGrid, GridColDef, GridRowSelectionModel } from '@mui/x-data-grid';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import { getStorage, ref, listAll, getDownloadURL, deleteObject, getMetadata } from 'firebase/storage';
@@ -89,6 +90,10 @@ function DataTable() {
         setOpen(false);
     };
 
+    const getData = () => {
+        console.log(options.get())
+    }
+
     return (
         <>
             <div className="modal-container" style={{ position: 'fixed', zIndex: 1000 }}>
@@ -116,8 +121,10 @@ function DataTable() {
                     }}
                 />
             </div>
+            <button onClick={getData}>get data</button>
         </>
     );
 }
 
 export default DataTable;
+
